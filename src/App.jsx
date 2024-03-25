@@ -23,10 +23,13 @@ function App() {
   };
 
   const handleAdd = () => {
-    setTodolist([...todoList, { id: uuidv4(), todo, isCompleted: false }]);
+    let uid = uuidv4();
+    setTodolist([...todoList, { id: uid, todo, isCompleted: false }]);
     setTodo("");
-    saveToLocal();
-    saveToLocal();
+    localStorage.setItem(
+      "todoList",
+      JSON.stringify([...todoList, { id: uid, todo, isCompleted: false }])
+    );
   };
 
   const handleEdit = (e, id) => {
